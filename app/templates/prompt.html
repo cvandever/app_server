@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+  <form>
+    <div class="mb-3">
+      <label for="prompt-label" class="form-label">Prompt Name</label>
+      <input type="text" class="form-control" id="prompt-label" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text text-danger">No spaces or special characters (exception: underscores '_')</div>
+    </div>
+    <div class="mb-3">
+      <label for="prompt-payload" class="form-label">Prompt Payload</label>
+      <textarea class="form-control" id="prompt-payload" rows="3"></textarea>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="English">
+      <label class="form-check-label" for="English">English</label>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="Spanish">
+        <label class="form-check-label" for="Spanish">Spanish</label>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="Chinese">
+        <label class="form-check-label" for="Chinese">Chinese</label>
+        <br>
+        <br>
+        <br>
+    <button type="submit" class="btn btn-primary">Create Prompt</button>
+  </form>
+  </div>
+</div>
+{% endblock %}

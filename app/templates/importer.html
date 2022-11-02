@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data"  class="table table-dark table-striped table-bordered border-primary" title="Verify">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Verified or Not Verified</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for address in addressVerify %}
+        <tr>
+          {% for key, value in address.items() %}
+            <td> {{ key }} </td>
+            <td> {{ value }} </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data"  class="table table-dark table-striped table-bordered border-primary" title="Verify">
+      <thead>
+        <tr>
+          <th>Error Category</th>
+          <th>Current Conflicts in Genesys</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for key, value in results.items() %}
+        <tr>
+            <td> {{ key }} </td>
+            <td> {{ value }} </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+<br>
+<br>
+ <a type="button" href="{{ url_for('build_table') }}" class="btn btn-primary btn-lg">Continue</a>
+  </div>
+</div>
+ {% endblock %}
+

@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  web:
+    build:
+      dockerfile: app/Dockerfile.txt
+    expose:
+      - 5000:5000
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    container_name: app_server
+
+  nginx:
+    build:
+      dockerfile: nginx/Dockerfile.txt
+    volumes:
+      - .:/app
+    ports:
+      - 1300:80
+    container_name: proxy_server
+    depends_on:
+      - web
+
+

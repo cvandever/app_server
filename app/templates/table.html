@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<div class="align-self-start">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Location">
+      <thead>
+        <tr>
+          <th>Location Name</th>
+          <th>e164</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Street 1</th>
+          <th>Street 2</th>
+          <th>Zip Code</th>
+          <th>Division</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {% for location in locations %}
+          <tr>
+            {% for value in location.values() %}
+              <td>{{ value }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Site">
+        <thead>
+        <tr>
+            <th>Site Name</th>
+            <th>Caller ID Name</th>
+            <th>Caller ID Number</th>
+            <th>Timezone</th>
+            <th>Location</th>
+            <th>Division</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for site in sites %}
+        <tr>
+            {% for value in site.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Queue">
+        <thead>
+        <tr>
+            <th>Queue Name</th>
+            <th>Caller ID Name</th>
+            <th>Caller ID Number</th>
+            <th>Wrap-Up Codes</th>
+            <th>Alerting Timeout</th>
+            <th>Division</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for queue in queues %}
+        <tr>
+            {% for value in queue.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Group">
+        <thead>
+        <tr>
+            <th>Group Name</th>
+            <th>e164</th>
+            <th>Extension</th>
+            <th>Owners</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for group in groups %}
+        <tr>
+            {% for value in group.values() %}}
+                <td>{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div> 
+<br>
+<br> 
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Schedule">
+        <thead>
+        <tr>
+            <th>Schedule Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Rules</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for schedule in schedules %}
+        <tr>
+            {% for value in schedule.values() %}
+                <td>{{ value }}</td>
+            
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Schedule Group">
+        <thead>
+        <tr>
+            <th>Schedule Group Name</th>
+            <th>Open Schedules</th>
+            <th>Closed Schedules</th>
+            <th>Holidays Schedules</th>
+            <th>Timezone</th>
+            <th>Division</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for scheduleGroup in scheduleGroups %}
+        <tr>
+            {% for value in scheduleGroup.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+        <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Emergency Group">
+        <thead>
+        <tr>
+            <th>Emergency Group Name</th>
+            <th>Division</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for emergencyGroup in emergencyGroups %}
+        <tr>
+            {% for value in emergencyGroup.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Call Route">
+        <thead>
+        <tr>
+            <th>Call Route Name</th>
+            <th>Division</th>
+            <th>DIDs</th>
+            <th>Call Flow Name</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for callRoute in callRoutes %}
+        <tr>
+            {% for value in callRoute.values() %}
+                <td>{{ value }}</td>
+            
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="align-self-start d-flex">
+  <div class="container w-75 flex-fill">
+    <table id="data" class="table table-dark table-striped table-bordered border-primary" title="Call Route">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Extension</th>
+            <th>Title</th>
+            <th>Department</th>
+            <th>Email Manager</th>
+            <th>Location Work</th>
+            <th>Roles</th>
+            <th>Queues</th>
+            <th>Division</th>
+            <th>Groups</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        {% for agent in agents %}
+        <tr>
+            {% for value in agent.values() %}
+                <td>{{ value }}</td>
+            
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+<br>
+ <a type="button" href="{{ url_for('homepage') }}" class="btn btn-success btn-lg">Start Build</a>
+  </div>
+</div>
+{% endblock %}
+
