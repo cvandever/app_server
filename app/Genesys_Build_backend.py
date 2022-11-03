@@ -2,7 +2,6 @@
 
 import json
 import requests
-from pprint import pprint
 import PureCloudPlatformClientV2 as v2
 import numpy as np
 from datetime import datetime

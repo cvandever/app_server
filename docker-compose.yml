@@ -1,25 +1,29 @@
 version: "3.8"
 services:
   web:
-    build:
-      dockerfile: app/Dockerfile.txt
+    build: app/
     expose:
+      - "5000"
+    ports:
       - 5000:5000
-    volumes:
-      - .:/app
     env_file:
       - ./.env
     container_name: app_server
+    networks:
+      - nginx_network
 
   nginx:
-    build:
-      dockerfile: nginx/Dockerfile.txt
-    volumes:
-      - .:/app
-    ports:
-      - 1300:80
+    build: nginx/
+    expose:
+      - "80"
+    networks:
+      - nginx_network
     container_name: proxy_server
     depends_on:
       - web
 
+networks:
+  nginx_network:
+    driver: bridge
+  
 

@@ -6,7 +6,6 @@ import Genesys_Build_import as Genesys_Import
 from Genesys_Build_import import pd, Genesys_Backend
 from werkzeug.utils import secure_filename
 import os
-from pprint import pprint
  
 app = Flask(__name__)
 Bootstrap(app)
@@ -36,8 +35,8 @@ def import_file():
         file_ext = os.path.splitext(f)[1]
         if file and file_ext == '.xlsx':
             filename = secure_filename(f)
-            file.save(os.path.join("files\\", filename))
-            build_excel = pd.read_excel(f"files\\{f}",sheet_name=['Location','Queues','Schedules','Emergency Groups','Agents'],converters={'e164':str, 'Zip Code':str,'Caller ID Number':str,'Alerting Timeout':str,'Extension':str})
+            file.save(os.path.join("files/", filename))
+            build_excel = pd.read_excel(f"files/{f}",sheet_name=['Location','Queues','Schedules','Emergency Groups','Agents'],converters={'e164':str, 'Zip Code':str,'Caller ID Number':str,'Alerting Timeout':str,'Extension':str})
             convert_excel = Genesys_Import.import_excel(build_excel)
             global import_data 
             import_data = convert_excel['data']
@@ -59,5 +58,5 @@ def get_template():
     return send_file(path, as_attachment=True)
 
     
-if __name__ == "__main__":
-    app.run()
+'''if __name__ == "__main__":
+    app.run()'''
