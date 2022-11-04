@@ -23,11 +23,11 @@ def prompt_import():
 
 @app.route("/import")
 def upload_page():
-    Genesys_Backend.get_api_token()
     return render_template('upload.html', title='File Upload')
 
 @app.route('/import/verify', methods=['GET','POST'])
 def import_file():
+    Genesys_Backend.get_api_token()
     Genesys_Import.sync_backend()
     if request.method == "POST":
         file = request.files['file']
@@ -35,13 +35,17 @@ def import_file():
         file_ext = os.path.splitext(f)[1]
         if file and file_ext == '.xlsx':
             filename = secure_filename(f)
-            file.save(os.path.join("files/", filename))
-            build_excel = pd.read_excel(f"files/{f}",sheet_name=['Location','Queues','Schedules','Emergency Groups','Agents'],converters={'e164':str, 'Zip Code':str,'Caller ID Number':str,'Alerting Timeout':str,'Extension':str})
-            convert_excel = Genesys_Import.import_excel(build_excel)
-            global import_data 
-            import_data = convert_excel['data']
+            try:
+                path = os.getcwd()
+                file.save(os.path.join(f"{path}/files/", filename))
+                build_excel = pd.read_excel(f"{path}/files/{filename}",sheet_name=['Location','Queues','Schedules','Emergency Groups','Agents'],converters={'e164':str, 'Zip Code':str,'Caller ID Number':str,'Alerting Timeout':str,'Extension':str})
+                convert_excel = Genesys_Import.import_excel(build_excel)
+                global import_data 
+                import_data = convert_excel['data']
+            except Exception as e:
+                return  render_template("error.html",e)
         else:
-            return  render_template("error.html")
+            return  render_template("error.html",e="Not and accepted file type")
             
     return render_template("importer.html",results=convert_excel['errors'],addressVerify=convert_excel['addressVerify'])
 
