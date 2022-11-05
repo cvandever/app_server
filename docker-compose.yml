@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 services:
   web:
     build: app/
@@ -9,21 +9,12 @@ services:
     env_file:
       - ./.env
     container_name: app_server
-    networks:
-      - nginx_network
 
   nginx:
     build: nginx/
-    expose:
-      - "80"
-    networks:
-      - nginx_network
+    ports:
+      - 80:80
     container_name: proxy_server
     depends_on:
       - web
-
-networks:
-  nginx_network:
-    driver: bridge
-  
 
